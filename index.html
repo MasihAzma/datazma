@@ -11,60 +11,144 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <!-- Icon sprite (Lucide-style, 1.75 stroke) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5A2.5 2.5 0 0 0 4 21.5"/><path d="M8 7h8M8 11h6"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+      <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-stetho" viewBox="0 0 24 24"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a5 5 0 0 0 10 0v-2"/><circle cx="21" cy="12" r="0.5"/><circle cx="21" cy="12" r="2"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 1.8 1.8.7-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-4 16-4-7z"/><path d="m12 13 8-9"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">رفتن به محتوای اصلی</a>
+  <div class="ambient" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
 
   <header class="nav" id="top">
     <div class="container nav-inner">
       <a href="#top" class="logo" aria-label="Datazma"><span>DAT</span><span class="logo-a">A</span><span class="logo-z">Z</span><span>MA</span></a>
-      <nav class="nav-links" aria-label="main">
+      <nav class="nav-links" id="navLinks" aria-label="Main">
         <a href="#services" data-i18n="nav.services">خدمات</a>
-        <a href="#audience" data-i18n="nav.audience">برای چه کسانی</a>
+        <a href="#usecases" data-i18n="nav.usecases">کاربردها</a>
         <a href="#why" data-i18n="nav.why">چرا Datazma</a>
         <a href="#process" data-i18n="nav.process">مسیر همکاری</a>
-        <a href="#contact" data-i18n="nav.contact">تماس</a>
+        <a href="#faq" data-i18n="nav.faq">سؤالات</a>
+        <a href="#contact" class="nav-cta-mobile btn btn-gold" data-i18n="nav.cta">مشاوره رایگان</a>
       </nav>
       <div class="nav-actions">
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-        <a href="#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">مشاوره رایگان</a>
+        <button class="icon-btn lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta" data-i18n="nav.cta">مشاوره رایگان</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><svg class="ic"><use href="#i-menu"/></svg></button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">DATAZMA · AI · DATA · INTELLIGENCE</p>
-        <h1 class="hero-title" data-i18n="hero.title">از یادگیری تا اجرا، با Datazma</h1>
-        <p class="hero-sub" data-i18n="hero.sub">آموزش کاربردی، مشاوره تخصصی، اجرای واقعی</p>
-        <p class="hero-text" data-i18n="hero.text">به سازمان‌ها، کلینیک‌ها، بیمارستان‌ها و پزشکان مستقل کمک می‌کنیم هوش مصنوعی را واقعاً وارد کارشان کنند. تیمی که هم زبان بالین را می‌فهمد، هم کد می‌نویسد.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-gold" data-i18n="hero.cta1">رزرو جلسه ۲۰ دقیقه‌ای رایگان</a>
-          <button type="button" class="btn btn-ghost" data-open-chat data-i18n="hero.cta2">از دستیار هوشمند بپرسید</button>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="badge reveal"><span class="badge-tri" aria-hidden="true"></span><span data-i18n="hero.badge">AI برای کلینیک‌ها، پزشکان و کسب‌وکارها</span></p>
+          <h1 class="hero-title reveal" data-i18n="hero.title">از یادگیری تا اجرا، با Datazma</h1>
+          <p class="hero-text reveal" data-i18n="hero.text">به سازمان‌ها، کلینیک‌ها و پزشکان مستقل کمک می‌کنیم هوش مصنوعی را واقعاً وارد کارشان کنند — با تیمی که هم زبان بالین را می‌فهمد، هم کد می‌نویسد.</p>
+          <div class="hero-ctas reveal">
+            <a href="#contact" class="btn btn-gold btn-lg"><span data-i18n="hero.cta1">رزرو جلسه ۲۰ دقیقه‌ای رایگان</span><svg class="ic ic-dir"><use href="#i-arrow"/></svg></a>
+            <button type="button" class="btn btn-ghost btn-lg" data-open-chat><svg class="ic"><use href="#i-chat"/></svg><span data-i18n="hero.cta2">از دستیار هوشمند بپرسید</span></button>
+          </div>
+          <ul class="hero-assure reveal">
+            <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="hero.as1">بدون نیاز به برنامه‌نویسی</span></li>
+            <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="hero.as2">رایگان و بدون تعهد</span></li>
+            <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="hero.as3">فارسی و انگلیسی</span></li>
+          </ul>
         </div>
-        <ul class="hero-stats">
-          <li><strong data-i18n="stat1.k">بالین + داده</strong><span data-i18n="stat1.v">دو تخصص در یک تیم</span></li>
-          <li><strong data-i18n="stat2.k">۳ مسیر</strong><span data-i18n="stat2.v">آموزش، مشاوره، ساخت</span></li>
-          <li><strong data-i18n="stat3.k">FA / EN</strong><span data-i18n="stat3.v">بازار فارسی‌زبان و جهانی</span></li>
+
+        <!-- Illustrative product visual: AI intake workflow with clinician sign-off -->
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="vis-tri"></div>
+          <div class="vis-card vis-main">
+            <div class="vis-head">
+              <span class="vis-dot"></span><span class="vis-dot"></span><span class="vis-dot"></span>
+              <span class="vis-title" data-i18n="vis.title">پذیرش هوشمند کلینیک</span>
+              <span class="vis-tag" data-i18n="vis.tag">نمونه</span>
+            </div>
+            <ol class="vis-flow">
+              <li class="done"><span class="vis-ico"><svg class="ic"><use href="#i-file"/></svg></span><div><strong data-i18n="vis.s1">فرم پذیرش آنلاین</strong><small data-i18n="vis.s1s">بیمار قبل از ویزیت پر می‌کند</small></div><svg class="ic ok"><use href="#i-check"/></svg></li>
+              <li class="done"><span class="vis-ico teal"><svg class="ic"><use href="#i-sparkle"/></svg></span><div><strong data-i18n="vis.s2">خلاصه‌سازی با AI</strong><small data-i18n="vis.s2s">سوابق در یک نگاه مرتب می‌شود</small></div><svg class="ic ok"><use href="#i-check"/></svg></li>
+              <li class="active"><span class="vis-ico gold"><svg class="ic"><use href="#i-user"/></svg></span><div><strong data-i18n="vis.s3">بررسی و تأیید پزشک</strong><small data-i18n="vis.s3s">تصمیم بالینی همیشه با شماست</small></div><span class="pulse"></span></li>
+            </ol>
+          </div>
+          <div class="vis-card vis-float vis-f1">
+            <svg class="ic"><use href="#i-calendar"/></svg>
+            <div><strong data-i18n="vis.f1">نوبت‌دهی خودکار</strong><small data-i18n="vis.f1s">۲۴ ساعته، بدون منشی</small></div>
+          </div>
+          <div class="vis-card vis-float vis-f2">
+            <svg class="ic"><use href="#i-lock"/></svg>
+            <div><strong>PHIPA-aware</strong><small data-i18n="vis.f2s">رضایت صریح، داده شفاف</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section class="proof" aria-label="Highlights">
+      <div class="container proof-grid">
+        <div class="proof-item reveal"><svg class="ic"><use href="#i-stetho"/></svg><div><strong data-i18n="pr1.k">بالین + داده</strong><span data-i18n="pr1.v">پزشکی، توانبخشی و Data Science در یک تیم</span></div></div>
+        <div class="proof-item reveal"><svg class="ic"><use href="#i-shield"/></svg><div><strong data-i18n="pr2.k">حریم خصوصی اول</strong><span data-i18n="pr2.v">انطباق شفاف با PHIPA</span></div></div>
+        <div class="proof-item reveal"><svg class="ic"><use href="#i-route"/></svg><div><strong data-i18n="pr3.k">از آموزش تا اجرا</strong><span data-i18n="pr3.v">یک مجموعه، کل مسیر</span></div></div>
+        <div class="proof-item reveal"><svg class="ic"><use href="#i-globe"/></svg><div><strong data-i18n="pr4.k">FA / EN</strong><span data-i18n="pr4.v">بازار فارسی‌زبان و جهانی</span></div></div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section" id="problem">
+      <div class="container problem">
+        <div class="section-head left reveal">
+          <p class="kicker"><span class="tri" aria-hidden="true"></span>THE PROBLEM</p>
+          <h2 data-i18n="prob.title">همه درباره AI حرف می‌زنند. اما از کجا باید شروع کرد؟</h2>
+          <p class="lead" data-i18n="prob.lead">امروز هوش مصنوعی همان چیزیست که ۱۰ سال پیش اینترنت بود. مشکل اکثر کلینیک‌ها و کسب‌وکارها نبودِ ابزار نیست — ندانستن نقطه شروع است.</p>
+        </div>
+        <ul class="pain-list">
+          <li class="reveal"><span class="pain-ico"><svg class="ic"><use href="#i-clock"/></svg></span><div><h3 data-i18n="pain1.t">بار اداری سنگین</h3><p data-i18n="pain1.d">پذیرش، پرونده و پیگیری‌ها وقتی را می‌گیرند که باید صرف بیمار و مشتری شود.</p></div></li>
+          <li class="reveal"><span class="pain-ico"><svg class="ic"><use href="#i-help"/></svg></span><div><h3 data-i18n="pain2.t">ابزارهای زیاد، مسیر نامشخص</h3><p data-i18n="pain2.d">هر هفته یک ترند جدید؛ اما کدام واقعاً مسئله شما را حل می‌کند؟</p></div></li>
+          <li class="reveal"><span class="pain-ico"><svg class="ic"><use href="#i-lock"/></svg></span><div><h3 data-i18n="pain3.t">نگرانی از محرمانگی داده</h3><p data-i18n="pain3.d">داده بیمار و مشتری حساس است و نباید بدون رضایت جایی برود.</p></div></li>
         </ul>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="section" id="services">
+    <section class="section section-alt" id="services">
       <div class="container">
-        <div class="section-head">
-          <span class="tri" aria-hidden="true"></span>
-          <p class="kicker">SERVICES</p>
+        <div class="section-head reveal">
+          <p class="kicker"><span class="tri" aria-hidden="true"></span>SERVICES</p>
           <h2 data-i18n="services.title">سه مسیر، یک هدف: AI که واقعاً کار می‌کند</h2>
         </div>
         <div class="grid-3">
-          <article class="card accent-blue">
-            <div class="icon-tri"><svg viewBox="0 0 24 24"><path d="M4 19V6l8-3 8 3v13l-8 3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <article class="card svc reveal">
+            <div class="icon-tri blue"><svg class="ic"><use href="#i-book"/></svg></div>
+            <p class="svc-n">01</p>
             <h3 data-i18n="s1.title">آموزش کاربردی AI</h3>
             <p data-i18n="s1.text">یادگیری AI نیاز به برنامه‌نویسی ندارد — فقط به مسیر و استراتژی درست. دوره‌ها و کارگاه‌های عملی برای تیم‌ها، پزشکان و علاقه‌مندان.</p>
             <ul class="ticks">
@@ -73,8 +157,10 @@
               <li data-i18n="s1.l3">مسیر تغییر شغل به سمت AI</li>
             </ul>
           </article>
-          <article class="card accent-teal">
-            <div class="icon-tri"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <article class="card svc featured reveal">
+            <span class="ribbon" data-i18n="s2.ribbon">نقطه شروع پیشنهادی</span>
+            <div class="icon-tri teal"><svg class="ic"><use href="#i-compass"/></svg></div>
+            <p class="svc-n">02</p>
             <h3 data-i18n="s2.title">مشاوره تخصصی پیاده‌سازی</h3>
             <p data-i18n="s2.text">نقطه شروع را با هم پیدا می‌کنیم: کدام فرآیند، کدام ابزار، چه بودجه‌ای. فقط چیزی را پیشنهاد می‌دهیم که واقعاً به‌کارتان می‌آید.</p>
             <ul class="ticks">
@@ -83,8 +169,9 @@
               <li data-i18n="s2.l3">انطباق با مقررات حریم خصوصی (PHIPA)</li>
             </ul>
           </article>
-          <article class="card accent-gold">
-            <div class="icon-tri"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <article class="card svc reveal">
+            <div class="icon-tri gold"><svg class="ic"><use href="#i-code"/></svg></div>
+            <p class="svc-n">03</p>
             <h3 data-i18n="s3.title">ساخت اپلیکیشن اختصاصی</h3>
             <p data-i18n="s3.text">از چت‌بات نوبت‌دهی تا خلاصه‌سازی پرونده و داشبورد داده — اپلیکیشنی می‌سازیم که یک مسئله واقعی را حل کند.</p>
             <ul class="ticks">
@@ -97,119 +184,195 @@
       </div>
     </section>
 
-    <!-- AUDIENCE -->
-    <section class="section section-alt" id="audience">
+    <!-- USE CASES -->
+    <section class="section" id="usecases">
       <div class="container">
-        <div class="section-head">
-          <span class="tri" aria-hidden="true"></span>
-          <p class="kicker">WHO WE SERVE</p>
-          <h2 data-i18n="aud.title">برای چه کسانی کار می‌کنیم</h2>
+        <div class="section-head reveal">
+          <p class="kicker"><span class="tri" aria-hidden="true"></span>USE CASES</p>
+          <h2 data-i18n="uc.title">AI در عمل — برای چه کسانی، چه کاری</h2>
+          <p class="lead" data-i18n="uc.lead">نمونه‌هایی از مسئله‌هایی که با هم حل می‌کنیم.</p>
         </div>
-        <div class="grid-4">
-          <div class="mini"><h3 data-i18n="a1.title">کلینیک‌ها و بیمارستان‌ها</h3><p data-i18n="a1.text">کاهش بار اداری، دقت بیشتر پرونده‌ها و عقب‌نماندن از رقبا.</p></div>
-          <div class="mini"><h3 data-i18n="a2.title">پزشکان و پیراپزشکان مستقل</h3><p data-i18n="a2.text">وقت کمتر برای کارهای تکراری، وقت بیشتر برای بیمار.</p></div>
-          <div class="mini"><h3 data-i18n="a3.title">سازمان‌های مالی و حقوقی</h3><p data-i18n="a3.text">تحلیل دقیق اسناد با حفظ کامل محرمانگی داده.</p></div>
-          <div class="mini"><h3 data-i18n="a4.title">علاقه‌مندان به یادگیری AI</h3><p data-i18n="a4.text">اگر نمی‌دانید از کجا شروع کنید، مسیر را با هم می‌سازیم.</p></div>
+        <div class="bento">
+          <article class="uc uc-wide reveal">
+            <span class="uc-who" data-i18n="uc1.who">کلینیک‌ها و بیمارستان‌ها</span>
+            <h3 data-i18n="uc1.t">پذیرش و مستندسازی سریع‌تر</h3>
+            <p data-i18n="uc1.d">فرم‌های پذیرش و سوابق بیمار به‌صورت خودکار مرتب و خلاصه می‌شوند تا تیم شما روی مراقبت تمرکز کند — تصمیم بالینی همیشه با پزشک.</p>
+            <svg class="ic uc-ic"><use href="#i-file"/></svg>
+          </article>
+          <article class="uc reveal">
+            <span class="uc-who" data-i18n="uc2.who">پزشکان مستقل</span>
+            <h3 data-i18n="uc2.t">نوبت‌دهی خودکار مطب</h3>
+            <p data-i18n="uc2.d">بدون یک خط کد، بدون منشی تمام‌وقت.</p>
+            <svg class="ic uc-ic"><use href="#i-calendar"/></svg>
+          </article>
+          <article class="uc reveal">
+            <span class="uc-who" data-i18n="uc3.who">مالی و حقوقی</span>
+            <h3 data-i18n="uc3.t">تحلیل دقیق اسناد</h3>
+            <p data-i18n="uc3.d">خلاصه و استخراج نکات کلیدی قراردادها با حفظ محرمانگی.</p>
+            <svg class="ic uc-ic"><use href="#i-scale"/></svg>
+          </article>
+          <article class="uc reveal">
+            <span class="uc-who" data-i18n="uc4.who">همه کسب‌وکارها</span>
+            <h3 data-i18n="uc4.t">پاسخ‌گویی ۲۴ ساعته</h3>
+            <p data-i18n="uc4.d">چت‌باتی مثل همین دستیار، برای سؤالات تکراری مشتریان.</p>
+            <svg class="ic uc-ic"><use href="#i-chat"/></svg>
+          </article>
+          <article class="uc reveal">
+            <span class="uc-who" data-i18n="uc5.who">علاقه‌مندان به AI</span>
+            <h3 data-i18n="uc5.t">مسیر شغلی جدید</h3>
+            <p data-i18n="uc5.d">از ایده تا اولین پروژه واقعی، قدم‌به‌قدم.</p>
+            <svg class="ic uc-ic"><use href="#i-route"/></svg>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- WHY -->
-    <section class="section" id="why">
+    <section class="section section-alt" id="why">
       <div class="container why">
-        <div class="why-text">
+        <div class="why-text reveal">
           <div class="section-head left">
-            <span class="tri" aria-hidden="true"></span>
-            <p class="kicker">WHY DATAZMA</p>
+            <p class="kicker"><span class="tri" aria-hidden="true"></span>WHY DATAZMA</p>
             <h2 data-i18n="why.title">تیمی که هم پای بالین بوده، هم کد نوشته</h2>
           </div>
-          <p data-i18n="why.p1">Datazma در تقاطع دو تخصص کمیاب ایستاده است: بالین (پزشکی، طب فیزیکی و توانبخشی، درمان دستی) و داده (هوش مصنوعی و Data Science). این ترکیب، واقعیت تیم ماست — نه یک شعار بازاریابی.</p>
+          <p class="lead" data-i18n="why.p1">Datazma در تقاطع دو تخصص کمیاب ایستاده است: بالین (پزشکی، طب فیزیکی و توانبخشی، درمان دستی) و داده (هوش مصنوعی و Data Science). این ترکیب، واقعیت تیم ماست — نه یک شعار بازاریابی.</p>
           <blockquote data-i18n="why.quote">هوش مصنوعی جایگزین تخصص شما نمی‌شود؛ کسی که از آن درست استفاده کند، جایگزین کسی می‌شود که نمی‌داند.</blockquote>
         </div>
         <div class="why-cards">
-          <div class="pill-card"><span class="dot teal"></span><div><h4 data-i18n="w1.title">AI برای فرآیند، نه تشخیص</h4><p data-i18n="w1.text">در حوزه سلامت روی بهبود و تسریع فرآیندهای بالینی و اداری تمرکز داریم — نه تشخیص یا تصمیم درمانی.</p></div></div>
-          <div class="pill-card"><span class="dot blue"></span><div><h4 data-i18n="w2.title">تعهد داده</h4><p data-i18n="w2.text">داده بیمار و مشتری بدون رضایت صریح ذخیره یا به‌اشتراک گذاشته نمی‌شود؛ محل نگهداری و انطباق با PHIPA شفاف اعلام می‌شود.</p></div></div>
-          <div class="pill-card"><span class="dot gold"></span><div><h4 data-i18n="w3.title">همراه تا اجرا</h4><p data-i18n="w3.text">ما فقط آموزش نمی‌دهیم — از یادگیری تا اجرای واقعی کنار شما می‌مانیم.</p></div></div>
+          <div class="pill-card reveal"><span class="pill-ico teal"><svg class="ic"><use href="#i-stetho"/></svg></span><div><h3 data-i18n="w1.title">AI برای فرآیند، نه تشخیص</h3><p data-i18n="w1.text">در حوزه سلامت روی بهبود و تسریع فرآیندهای بالینی و اداری تمرکز داریم — نه تشخیص یا تصمیم درمانی.</p></div></div>
+          <div class="pill-card reveal"><span class="pill-ico blue"><svg class="ic"><use href="#i-shield"/></svg></span><div><h3 data-i18n="w2.title">تعهد داده</h3><p data-i18n="w2.text">داده بیمار و مشتری بدون رضایت صریح ذخیره یا به‌اشتراک گذاشته نمی‌شود؛ محل نگهداری و انطباق با PHIPA شفاف اعلام می‌شود.</p></div></div>
+          <div class="pill-card reveal"><span class="pill-ico gold"><svg class="ic"><use href="#i-route"/></svg></span><div><h3 data-i18n="w3.title">همراه تا اجرا</h3><p data-i18n="w3.text">ما فقط آموزش نمی‌دهیم — از یادگیری تا اجرای واقعی کنار شما می‌مانیم.</p></div></div>
         </div>
       </div>
     </section>
 
     <!-- PROCESS -->
-    <section class="section section-alt" id="process">
+    <section class="section" id="process">
       <div class="container">
-        <div class="section-head">
-          <span class="tri" aria-hidden="true"></span>
-          <p class="kicker">PROCESS</p>
+        <div class="section-head reveal">
+          <p class="kicker"><span class="tri" aria-hidden="true"></span>PROCESS</p>
           <h2 data-i18n="proc.title">مسیر همکاری در چهار قدم</h2>
         </div>
         <ol class="steps">
-          <li><span class="step-n">01</span><h3 data-i18n="p1.title">گفتگوی ۲۰ دقیقه‌ای</h3><p data-i18n="p1.text">مسئله و هدف شما را می‌شنویم — رایگان و بدون تعهد.</p></li>
-          <li><span class="step-n">02</span><h3 data-i18n="p2.title">نقشه راه</h3><p data-i18n="p2.text">فرآیندهای قابل بهبود و ابزار مناسب را مشخص می‌کنیم.</p></li>
-          <li><span class="step-n">03</span><h3 data-i18n="p3.title">آموزش یا ساخت</h3><p data-i18n="p3.text">تیم شما را آموزش می‌دهیم یا راهکار اختصاصی را می‌سازیم.</p></li>
-          <li><span class="step-n">04</span><h3 data-i18n="p4.title">اجرا و همراهی</h3><p data-i18n="p4.text">اگر جایی گیر کردید، همان لحظه کنارتان هستیم.</p></li>
+          <li class="reveal"><span class="step-n">01</span><h3 data-i18n="p1.title">گفتگوی ۲۰ دقیقه‌ای</h3><p data-i18n="p1.text">مسئله و هدف شما را می‌شنویم — رایگان و بدون تعهد.</p></li>
+          <li class="reveal"><span class="step-n">02</span><h3 data-i18n="p2.title">نقشه راه</h3><p data-i18n="p2.text">فرآیندهای قابل بهبود و ابزار مناسب را مشخص می‌کنیم.</p></li>
+          <li class="reveal"><span class="step-n">03</span><h3 data-i18n="p3.title">آموزش یا ساخت</h3><p data-i18n="p3.text">تیم شما را آموزش می‌دهیم یا راهکار اختصاصی را می‌سازیم.</p></li>
+          <li class="reveal"><span class="step-n">04</span><h3 data-i18n="p4.title">اجرا و همراهی</h3><p data-i18n="p4.text">اگر جایی گیر کردید، همان لحظه کنارتان هستیم.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="container faq-wrap">
+        <div class="section-head left reveal">
+          <p class="kicker"><span class="tri" aria-hidden="true"></span>FAQ</p>
+          <h2 data-i18n="faq.title">سؤالات پرتکرار</h2>
+          <p class="lead" data-i18n="faq.lead">جواب سؤالتان اینجا نیست؟ از دستیار هوشمند بپرسید.</p>
+          <button type="button" class="btn btn-ghost" data-open-chat><svg class="ic"><use href="#i-chat"/></svg><span data-i18n="faq.cta">گفتگو با دستیار</span></button>
+        </div>
+        <div class="faq">
+          <details class="reveal"><summary data-i18n="q1">برای استفاده از AI باید برنامه‌نویسی بلد باشم؟</summary><p data-i18n="a1">نه. یادگیری و استفاده از AI فقط به مسیر و استراتژی درست نیاز دارد. بخش فنی را ما انجام می‌دهیم و قدم‌به‌قدم همراهتان هستیم.</p></details>
+          <details class="reveal"><summary data-i18n="q2">آیا AI شما تشخیص پزشکی می‌دهد؟</summary><p data-i18n="a2">خیر. در حوزه سلامت، AI را فقط برای بهبود فرآیندهای بالینی و اداری به کار می‌بریم — تشخیص و تصمیم درمانی همیشه با پزشک است.</p></details>
+          <details class="reveal"><summary data-i18n="q3">با داده بیماران و مشتریان چه می‌کنید؟</summary><p data-i18n="a3">هیچ داده‌ای بدون رضایت صریح ذخیره یا به‌اشتراک گذاشته نمی‌شود. محل نگهداری داده و نحوه انطباق با مقررات محلی (PHIPA) را شفاف اعلام می‌کنیم.</p></details>
+          <details class="reveal"><summary data-i18n="q4">هزینه همکاری چقدر است؟</summary><p data-i18n="a4">به نوع همکاری بستگی دارد. بعد از جلسه رایگان ۲۰ دقیقه‌ای، پیشنهادی شفاف و متناسب با بودجه شما ارائه می‌دهیم — بدون وعده‌های اغراق‌آمیز.</p></details>
+          <details class="reveal"><summary data-i18n="q5">به زبان فارسی هم خدمات می‌دهید؟</summary><p data-i18n="a5">بله. همه خدمات ما به فارسی و انگلیسی ارائه می‌شود — برای بازار فارسی‌زبان و جهانی.</p></details>
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
-      <div class="container contact">
-        <div>
-          <div class="section-head left">
-            <span class="tri" aria-hidden="true"></span>
-            <p class="kicker">CONTACT</p>
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <p class="kicker"><span class="tri" aria-hidden="true"></span>CONTACT</p>
             <h2 data-i18n="c.title">بیایید ۲۰ دقیقه صحبت کنیم</h2>
+            <p class="lead" data-i18n="c.text">بگویید کجای کارتان وقت یا انرژی زیادی می‌گیرد. با هم می‌بینیم AI چطور می‌تواند آن را ساده‌تر کند.</p>
+            <ul class="contact-points">
+              <li><svg class="ic"><use href="#i-clock"/></svg><span data-i18n="c.p1">۲۰ دقیقه، آنلاین</span></li>
+              <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="c.p2">رایگان و بدون تعهد</span></li>
+              <li><svg class="ic"><use href="#i-shield"/></svg><span data-i18n="c.p3">گفتگو کاملاً محرمانه</span></li>
+            </ul>
           </div>
-          <p data-i18n="c.text">بگویید کجای کارتان وقت یا انرژی زیادی می‌گیرد. با هم می‌بینیم AI چطور می‌تواند آن را ساده‌تر کند.</p>
-          <ul class="contact-list">
-            <li><span>Web</span><a href="https://datazma.ca">datazma.ca</a></li>
-            <li><span>Instagram</span><a href="https://instagram.com/datazma" target="_blank" rel="noopener">@datazma</a></li>
-          </ul>
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="f-name"><span data-i18n="f.name">نام</span> <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" required autocomplete="name" aria-describedby="e-name">
+              <p class="field-err" id="e-name" data-i18n="f.errName" hidden>لطفاً نام خود را وارد کنید.</p>
+            </div>
+            <div class="field">
+              <label for="f-email"><span data-i18n="f.email">ایمیل</span> <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" required autocomplete="email" dir="ltr" aria-describedby="e-email">
+              <p class="field-err" id="e-email" data-i18n="f.errEmail" hidden>یک ایمیل معتبر وارد کنید؛ مثل name@example.com</p>
+            </div>
+            <div class="field">
+              <label for="f-role" data-i18n="f.role">شما کدام هستید؟</label>
+              <select id="f-role" name="role">
+                <option data-i18n="f.r1">مدیر کلینیک / بیمارستان</option>
+                <option data-i18n="f.r2">پزشک / پیراپزشک مستقل</option>
+                <option data-i18n="f.r3">سازمان مالی / حقوقی</option>
+                <option data-i18n="f.r4">علاقه‌مند به یادگیری AI</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg" data-i18n="f.msg">کجای کارتان را می‌خواهید ساده‌تر کنید؟</label>
+              <textarea id="f-msg" name="message" rows="4" aria-describedby="h-msg"></textarea>
+              <p class="field-help" id="h-msg" data-i18n="f.note">لطفاً اطلاعات پزشکی بیماران را اینجا وارد نکنید.</p>
+            </div>
+            <button class="btn btn-gold btn-lg btn-block" type="submit"><span data-i18n="f.submit">درخواست جلسه رایگان</span><svg class="ic ic-dir"><use href="#i-arrow"/></svg></button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
         </div>
-        <form class="card form" id="contactForm">
-          <label><span data-i18n="f.name">نام</span><input name="name" required autocomplete="name"></label>
-          <label><span data-i18n="f.email">ایمیل</span><input name="email" type="email" required autocomplete="email" dir="ltr"></label>
-          <label><span data-i18n="f.role">شما کدام هستید؟</span>
-            <select name="role">
-              <option data-i18n="f.r1">مدیر کلینیک / بیمارستان</option>
-              <option data-i18n="f.r2">پزشک / پیراپزشک مستقل</option>
-              <option data-i18n="f.r3">سازمان مالی / حقوقی</option>
-              <option data-i18n="f.r4">علاقه‌مند به یادگیری AI</option>
-            </select>
-          </label>
-          <label><span data-i18n="f.msg">پیام شما</span><textarea name="message" rows="4"></textarea></label>
-          <p class="form-note" data-i18n="f.note">لطفاً اطلاعات پزشکی بیماران را اینجا وارد نکنید.</p>
-          <button class="btn btn-gold" type="submit" data-i18n="f.submit">درخواست جلسه رایگان</button>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <a href="#top" class="logo logo-sm"><span>DAT</span><span class="logo-a">A</span><span class="logo-z">Z</span><span>MA</span></a>
-      <p data-i18n="footer.tag">Datazma | آموزش، مشاوره و اپلیکیشن‌های هوش مصنوعی — datazma.ca</p>
-      <p class="muted">© 2026 Datazma</p>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo logo-sm" aria-label="Datazma"><span>DAT</span><span class="logo-a">A</span><span class="logo-z">Z</span><span>MA</span></a>
+        <p data-i18n="footer.tag">آموزش، مشاوره و اپلیکیشن‌های هوش مصنوعی — از یادگیری تا اجرا.</p>
+      </div>
+      <nav class="footer-col" aria-label="Footer">
+        <h3 data-i18n="footer.links">دسترسی سریع</h3>
+        <a href="#services" data-i18n="nav.services">خدمات</a>
+        <a href="#usecases" data-i18n="nav.usecases">کاربردها</a>
+        <a href="#faq" data-i18n="nav.faq">سؤالات</a>
+        <a href="#contact" data-i18n="nav.contact">تماس</a>
+      </nav>
+      <div class="footer-col">
+        <h3 data-i18n="footer.connect">در ارتباط باشیم</h3>
+        <a href="https://instagram.com/datazma" target="_blank" rel="noopener" class="ext"><svg class="ic"><use href="#i-instagram"/></svg><span dir="ltr">@datazma</span></a>
+        <a href="#contact" class="ext"><svg class="ic"><use href="#i-mail"/></svg><span dir="ltr">datazma.ca</span></a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Datazma</p>
+      <p data-i18n="footer.disc">Datazma خدمات تشخیصی یا درمانی ارائه نمی‌دهد.</p>
     </div>
   </footer>
 
   <!-- CHATBOT -->
-  <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open chat" aria-expanded="false">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open Datazma assistant" aria-expanded="false" aria-controls="chat">
+    <svg class="ic ic-open"><use href="#i-chat"/></svg>
+    <svg class="ic ic-close"><use href="#i-x"/></svg>
+    <span class="launcher-badge" aria-hidden="true"></span>
   </button>
-  <section class="chat" id="chat" aria-label="Datazma assistant" hidden>
+  <section class="chat" id="chat" role="dialog" aria-label="Datazma assistant" hidden>
     <header class="chat-head">
-      <div class="chat-avatar">A<span>Z</span></div>
-      <div><strong data-i18n="chat.name">دستیار Datazma</strong><small data-i18n="chat.status">معمولاً همین لحظه پاسخ می‌دهد</small></div>
-      <button class="chat-close" id="chatClose" type="button" aria-label="Close">×</button>
+      <div class="chat-avatar" aria-hidden="true">A<span>Z</span></div>
+      <div class="chat-id"><strong data-i18n="chat.name">دستیار Datazma</strong><small><span class="online"></span><span data-i18n="chat.status">آنلاین — معمولاً همین لحظه پاسخ می‌دهد</span></small></div>
+      <button class="chat-close" id="chatClose" type="button" aria-label="Close chat"><svg class="ic"><use href="#i-x"/></svg></button>
     </header>
     <div class="chat-body" id="chatBody" aria-live="polite"></div>
     <div class="chat-chips" id="chatChips"></div>
     <form class="chat-input" id="chatForm">
+      <label for="chatText" class="sr-only" data-i18n="chat.ph">سؤالتان را بنویسید…</label>
       <input id="chatText" autocomplete="off" data-i18n-ph="chat.ph" placeholder="سؤالتان را بنویسید…">
-      <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-7z" fill="currentColor"/></svg></button>
+      <button type="submit" aria-label="Send"><svg class="ic ic-dir"><use href="#i-send"/></svg></button>
     </form>
+    <p class="chat-foot" data-i18n="chat.foot">دستیار خودکار · مشاوره پزشکی ارائه نمی‌دهد</p>
   </section>
 
   <script src="assets/i18n.js"></script>

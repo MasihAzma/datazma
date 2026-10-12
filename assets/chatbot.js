@@ -10,8 +10,8 @@ window.DATAZMA_CHAT = window.DATAZMA_CHAT || { endpoint: "" };
     {
       id: "greet",
       k: ["سلام", "درود", "وقت بخیر", "صبح بخیر", "hello", "hi", "hey", "salam"],
-      fa: "سلام! 👋 من دستیار Datazma هستم. درباره آموزش AI، مشاوره پیاده‌سازی یا ساخت اپلیکیشن اختصاصی هر سؤالی دارید بپرسید.",
-      en: "Hi there! 👋 I'm the Datazma assistant. Ask me anything about AI training, implementation consulting, or custom AI apps."
+      fa: "سلام! من دستیار Datazma هستم. درباره آموزش AI، مشاوره پیاده‌سازی یا ساخت اپلیکیشن اختصاصی هر سؤالی دارید بپرسید.",
+      en: "Hi there! I'm the Datazma assistant. Ask me anything about AI training, implementation consulting, or custom AI apps."
     },
     {
       id: "about",
@@ -52,8 +52,8 @@ window.DATAZMA_CHAT = window.DATAZMA_CHAT || { endpoint: "" };
     {
       id: "diagnosis",
       k: ["تشخیص", "بیماری", "علائم", "دارو", "درد", "نسخه", "diagnose", "diagnosis", "symptom", "medication", "pain", "treatment for", "prescription"],
-      fa: "متأسفانه من نمی‌توانم درباره تشخیص، دارو یا درمان نظر بدهم — این کار پزشک شماست. 🙏\n\nDatazma روی بهبود فرآیندهای بالینی و اداری با AI کار می‌کند، نه تصمیم درمانی. اگر سؤال پزشکی دارید، لطفاً با پزشک خود مشورت کنید.",
-      en: "Sorry, I can't advise on diagnosis, medication or treatment — that's your clinician's job. 🙏\n\nDatazma uses AI to improve clinical and admin processes, not to make treatment decisions. For medical questions, please consult your healthcare provider."
+      fa: "متأسفانه من نمی‌توانم درباره تشخیص، دارو یا درمان نظر بدهم — این کار پزشک شماست.\n\nDatazma روی بهبود فرآیندهای بالینی و اداری با AI کار می‌کند، نه تصمیم درمانی. اگر سؤال پزشکی دارید، لطفاً با پزشک خود مشورت کنید.",
+      en: "Sorry, I can't advise on diagnosis, medication or treatment — that's your clinician's job.\n\nDatazma uses AI to improve clinical and admin processes, not to make treatment decisions. For medical questions, please consult your healthcare provider."
     },
     {
       id: "privacy",
@@ -100,24 +100,24 @@ window.DATAZMA_CHAT = window.DATAZMA_CHAT || { endpoint: "" };
     {
       id: "thanks",
       k: ["مرسی", "ممنون", "سپاس", "متشکر", "thanks", "thank you", "thx"],
-      fa: "خواهش می‌کنم! 🌱 اگر سؤال دیگری داشتید، همین‌جا هستم.",
-      en: "You're welcome! 🌱 If anything else comes up, I'm right here."
+      fa: "خواهش می‌کنم! اگر سؤال دیگری داشتید، همین‌جا هستم.",
+      en: "You're welcome! If anything else comes up, I'm right here."
     },
     {
       id: "bye",
       k: ["خداحافظ", "bye", "goodbye", "see you"],
-      fa: "خداحافظ! از یادگیری تا اجرا، با Datazma. 👋",
-      en: "Goodbye! From learning to doing, with Datazma. 👋"
+      fa: "خداحافظ! از یادگیری تا اجرا، با Datazma.",
+      en: "Goodbye! From learning to doing, with Datazma."
     }
   ];
 
   var FALLBACK = {
-    fa: "سؤال خوبی است! برای اینکه دقیق جواب بدهم، بهتر است در یک جلسه ۲۰ دقیقه‌ای رایگان صحبت کنیم: <a href=\"#contact\" data-close-chat>رزرو جلسه</a>\n\nیا یکی از موضوعات زیر را انتخاب کنید 👇",
-    en: "Good question! To answer it properly, let's talk in a free 20-minute session: <a href=\"#contact\" data-close-chat>Book a session</a>\n\nOr pick one of the topics below 👇"
+    fa: "سؤال خوبی است! برای اینکه دقیق جواب بدهم، بهتر است در یک جلسه ۲۰ دقیقه‌ای رایگان صحبت کنیم: <a href=\"#contact\" data-close-chat>رزرو جلسه</a>\n\nیا یکی از موضوعات زیر را انتخاب کنید.",
+    en: "Good question! To answer it properly, let's talk in a free 20-minute session: <a href=\"#contact\" data-close-chat>Book a session</a>\n\nOr pick one of the topics below."
   };
   var WELCOME = {
-    fa: "سلام! 👋 من دستیار Datazma هستم.\nچطور می‌توانم کمکتان کنم هوش مصنوعی را وارد کارتان کنید؟",
-    en: "Hi! 👋 I'm the Datazma assistant.\nHow can I help you bring AI into your work?"
+    fa: "سلام! من دستیار Datazma هستم.\nچطور می‌توانم کمکتان کنم هوش مصنوعی را وارد کارتان کنید؟",
+    en: "Hi! I'm the Datazma assistant.\nHow can I help you bring AI into your work?"
   };
   var CHIPS = {
     fa: [["خدمات Datazma", "services"], ["AI برای کلینیک", "health"], ["دوره‌های آموزشی", "training"], ["حریم خصوصی داده", "privacy"], ["رزرو مشاوره رایگان", "book"]],
