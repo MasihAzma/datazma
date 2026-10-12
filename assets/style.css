@@ -480,3 +480,11 @@ html[dir="rtl"] .chat { transform-origin: bottom left; }
   *, *::before, *::after { animation: none !important; transition-duration: 1ms !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* AI reply booking button */
+.msg a.chat-book {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 40px; margin-top: 10px;
+  padding: 8px 16px; border-radius: var(--r-sm); background: var(--accent); color: var(--bg);
+  font: 700 14px var(--font-head); text-decoration: none; white-space: normal;
+}
+.msg a.chat-book:hover { background: var(--accent-hover); }

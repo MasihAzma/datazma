@@ -1,8 +1,8 @@
-// Datazma Assistant — bilingual chatbot.
-// Works fully in the browser from the knowledge base below. To connect an LLM backend
-// (e.g. an n8n webhook or serverless function), set `endpoint`; it receives
-// POST { message, history, lang } and must return JSON { reply }. On any error the
-// built-in knowledge base answers instead.
+// Datazma Assistant — bilingual AI chatbot.
+// Replies come from Claude through the Datazma Cloudflare Worker (`endpoint`), which holds
+// the API key and system prompt. Contract: POST { messages: [{role, content}], lang } →
+// JSON { reply }. If the endpoint is unset, slow or failing, the built-in knowledge base
+// below answers instead, so the chat never breaks.
 window.DATAZMA_CHAT = window.DATAZMA_CHAT || { endpoint: "" };
 
 (function () {
@@ -174,33 +174,52 @@ window.DATAZMA_CHAT = window.DATAZMA_CHAT || { endpoint: "" };
     return it ? it[lang] : FALLBACK[lang];
   }
 
-  function remoteReply(text) {
-    var ep = window.DATAZMA_CHAT && window.DATAZMA_CHAT.endpoint;
-    if (!ep) return Promise.reject();
-    return fetch(ep, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text, history: history.slice(-10), lang: getLang() })
-    }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (j) {
-        var reply = j.reply || j.output || j.text;
-        if (!reply) throw 0;
-        var tmp = document.createElement("div"); tmp.textContent = reply; return tmp.innerHTML;
-      });
+  var BOOK_LINK = {
+    fa: '<a href="#contact" class="chat-book" data-close-chat>رزرو جلسه رایگان ۲۰ دقیقه‌ای</a>',
+    en: '<a href="#contact" class="chat-book" data-close-chat>Book a free 20-min session</a>'
+  };
+
+  // Escape model text, then turn the [[BOOK]] token into a booking button.
+  function renderAI(reply) {
+    var tmp = document.createElement("div");
+    tmp.textContent = reply.replace(/\n*\[\[BOOK\]\]\s*/g, "@@BOOK@@").trim();
+    var html = tmp.innerHTML, lang = isFa(reply) ? "fa" : "en";
+    return html.indexOf("@@BOOK@@") > -1 ? html.replace(/@@BOOK@@/g, "") + "\n" + BOOK_LINK[lang] : html;
   }
 
+  function remoteReply() {
+    var ep = window.DATAZMA_CHAT && window.DATAZMA_CHAT.endpoint;
+    if (!ep || !window.fetch) return Promise.reject();
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 30000);
+    return fetch(ep, {
+      method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl && ctrl.signal,
+      body: JSON.stringify({ messages: history.slice(-12), lang: getLang() })
+    }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (j) {
+        clearTimeout(timer);
+        if (!j || typeof j.reply !== "string" || !j.reply.trim()) throw 0;
+        return renderAI(j.reply);
+      }, function (e) { clearTimeout(timer); throw e; });
+  }
+
+  var busy = false;
   function send(text, forcedId) {
-    text = (text || "").trim();
-    if (!text) return;
+    text = (text || "").trim().slice(0, 1000);
+    if (!text || busy) return;
+    busy = true;
     add("user", text);
     history.push({ role: "user", content: text });
-    var typing = add("bot", '<span class="typing"><i></i><i></i><i></i></span>');
-    var p = forcedId ? Promise.reject() : remoteReply(text);
-    p.catch(function () {
-      return new Promise(function (res) { setTimeout(function () { res(localReply(text, forcedId)); }, 550 + Math.random() * 400); });
+    var typing = add("bot", '<span class="typing" aria-label="typing"><i></i><i></i><i></i></span>');
+    remoteReply().catch(function () {
+      return new Promise(function (res) { setTimeout(function () { res(localReply(text, forcedId)); }, 450); });
     }).then(function (html) {
       typing.innerHTML = html;
-      history.push({ role: "assistant", content: typing.textContent });
+      var plain = typing.cloneNode(true);
+      plain.querySelectorAll(".chat-book").forEach(function (a) { a.remove(); });
+      history.push({ role: "assistant", content: plain.textContent.trim() });
       body.scrollTop = body.scrollHeight;
+      busy = false;
     });
   }
 
